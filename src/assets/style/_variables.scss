@@ -1,0 +1,29 @@
+// Default variables
+html {
+	--base-font-size: 20px;
+}
+
+// Light default theme
+body {
+	--bg-color: #20212b;
+	--bg-content-color: #363848;
+	--bg-code: #4c5a84;
+	--body-color: #ced8de;
+	--title-color: #fff;
+	--link-color: #bd93f9;
+	--border-color: rgba(0, 0, 0, 0.1);
+	--space: 3.5rem;
+	--content-width: 860px;
+	--header-height: 80px;
+	--radius: 5px;
+}
+
+@media screen and (max-width: 650px) {
+	html {
+		--base-font-size: 17px;
+	}
+	body {
+		--space: 1.5rem;
+		--header-height: 60px;
+	}
+}
