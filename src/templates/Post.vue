@@ -15,10 +15,6 @@
       </div>
 
       <div class="post__content" v-html="$page.post.content" />
-
-      <div class="post__footer">
-        <PostTags :post="$page.post" />
-      </div>
     </div>
 
   </Layout>
@@ -54,8 +50,7 @@ query Post ($id: ID!) {
   post: post (id: $id) {
     title
     path
-    date (format: "D. MMMM YYYY")
-    timeToRead
+    date (format: "DD/MM/YYYY")
     tags {
       id
       title
@@ -95,14 +90,8 @@ query Post ($id: ID!) {
   }
 
   &__content {
-    h2:first-child {
-      margin-top: 0;
-    }
 
-    p:first-of-type {
-      font-size: 1.2em;
-      color: var(--title-color);
-    }
+    text-align: justify;
 
     img {
       width: calc(100% + var(--space) * 2);

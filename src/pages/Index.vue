@@ -18,7 +18,7 @@ query {
       node {
         id
         title
-        date (format: "D. MMMM YYYY")
+        date (format: "DD/MM/YYYY")
         timeToRead
         description
         cover_image (width: 770, height: 380, blur: 10)
