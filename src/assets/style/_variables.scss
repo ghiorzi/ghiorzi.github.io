@@ -7,7 +7,7 @@ html {
 body {
 	--bg-color: #20212b;
 	--bg-content-color: #363848;
-	--bg-code: #4c5a84;
+	--bg-code: lighten(var(--bg-content-color), 20%);
 	--body-color: #ced8de;
 	--title-color: #fff;
 	--link-color: #bd93f9;
