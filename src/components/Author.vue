@@ -1,14 +1,14 @@
 <template>
 	<div class="author">
 
-		<g-image alt="Author image" class="author__image" src="~/assets/images/author.png" width="180" height="180" blur="5" />
+		<g-image alt="Author image" class="author__image" src="~/assets/images/author.jpeg" width="180" height="180" blur="5" />
 
-		<h1 v-if="showTitle" class="author__site-title">
+		<h1 class="author__site-title">
 			Rodrigo Ghiorzi
 		</h1>
 
 		<p class="author__intro">
-			A regular lazy bug developer
+			Full Stack Bug Developer
 		</p>
 
 		<p class="author__links">
@@ -20,9 +20,7 @@
 </template>
 
 <script>
-export default {
-	props: ['showTitle']
-}
+export default { }
 </script>
 
 <style lang="scss">
