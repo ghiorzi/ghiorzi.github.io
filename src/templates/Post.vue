@@ -38,6 +38,18 @@ export default {
         {
           name: 'description',
           content: this.$page.post.description
+        },
+        {
+          name: 'image',
+          content: this.$page.post.cover_image.src
+        },
+        {
+          name: 'author',
+          content: 'Rodrigo Ghiorzi',
+        },
+        {
+          name: 'publish_date',
+          content: this.$page.post.date,
         }
       ]
     }
