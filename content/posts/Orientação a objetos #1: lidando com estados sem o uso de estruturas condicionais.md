@@ -9,7 +9,7 @@ canonical_url: false
 description: "Há quem diga dominar o paradigma orientado a objetos e há quem considere questionável esta assertiva. Em qual destes grupos você se encaixa?"
 ---
 
-## 1. Introdução
+## Introdução
 
 Há quem diga dominar o paradigma orientado a objetos e há quem considere questionável esta assertiva. Em qual destes grupos você se encaixa?
 
@@ -17,7 +17,7 @@ Apesar da orientação a objetos ser imensamente afamada, pode-se exprimir que �
 
 Permita-me, através deste artigo, expor um cenário para reflexionarmos sobre orientação a objetos.
 
-## 2. Cenário
+## 1. Cenário
 
 Considere um simulador de banco em que seja possível **depositar**, **sacar**, **fechar**, **ativar** e **congelar** uma **conta**.
 
@@ -31,7 +31,7 @@ Considere um simulador de banco em que seja possível **depositar**, **sacar**, 
 
 Qual a sua solução para este problema?
 
-### 2.1 Resolução
+### 1.1 Resolução
 
 Primeiramente, **esqueça que flags, if, switch existem**. Pense em objetos.
 

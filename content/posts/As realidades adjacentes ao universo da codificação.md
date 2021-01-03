@@ -4,16 +4,16 @@ date: 2018-12-07
 published: true
 tags: ['Reflexão']
 series: false
-cover_image: ./images/1. As realidades adjacentes ao universo da codificação.jpg
+cover_image: ./images/As realidades adjacentes ao universo da codificação.jpg
 canonical_url: false
 description: "Ao perpassar do nosso ínfimo lapso existencial assimilamos novos conceitos e por conseguinte ampliamos nosso intelecto em consonância com a nossa cosmovisão. Tal-qualmente, remodelamos nossa concepção perante a acepção de alguns vocábulos."
 ---
 
-## 1. Introdução
+## Introdução
 
 Ao perpassar do nosso ínfimo lapso existencial (comumente conhecido como vida) assimilamos novos conceitos e por conseguinte ampliamos nosso intelecto em consonância com a nossa cosmovisão. Tal-qualmente, remodelamos nossa concepção perante a acepção de alguns vocábulos.
 
-## 2. Codificação != Programação
+## 1. Codificação != Programação
 
 Estou muito longe de me considerar um _wordsmith_, contudo gostaria de explanar de modo lacônico as distinções entre os termos **codificação** e **programação**.
 
@@ -29,7 +29,7 @@ Analisar problemas, idealizar soluções, sanar as dores do cliente, tornar o pr
 
 Em síntese, o processo de desenvolvimento principia na etapa de planejamento e perfaz somente ao alvejar seu respectivo propósito: **entregar valor para o cliente**.
 
-## 3. Valor percebido
+## 2. Valor percebido
 
 > "Valor percebido baseia-se, na diferença entre o que o cliente obtém e os custos que ele assume pelas diferentes opções possíveis." (Philip Kotler)
 
@@ -39,7 +39,7 @@ Em contrapartida, se não enxergamos valor em um produto/serviço deixamos de co
 
 O valor percebido é um aspecto categoricamente subjetivo. Portanto, concerne ao cliente perceber valor nas funcionalidades presentes no produto. Isto posto,  torna-se evidente que se houver falha na recognição da **experiência almejada pelo cliente**, o mesmo não irá assentir o valor da funcionalidade desenvolvida.
 
-## 4. Priorização seletiva de tarefas
+## 3. Priorização seletiva de tarefas
 
 Há momentos que tarefas complexas/extensas são outorgadas para o desenvolvedor, e ele como um mancebo metódico deve erigir mecanismos para escalonar este enumerado de labores.  
 

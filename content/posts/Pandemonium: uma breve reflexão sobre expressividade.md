@@ -9,7 +9,7 @@ canonical_url: false
 description: "Inteligibilidade é comumente negligenciada quando estamos dando nossos primeiros passos no mundo da programação. Manifeste-se, por favor, quem em nenhuma circunstância declarou variáveis desprovidas de semântica."
 ---
 
-## 1. Introdução
+## Introdução
 
 Inteligibilidade é comumente negligenciada quando estamos dando nossos primeiros passos no mundo da programação. Manifeste-se, por favor, quem em nenhuma circunstância declarou variáveis desprovidas de semântica.
 
@@ -17,7 +17,7 @@ Há muito tempo debate-se sobre código de fácil entendimento. No entanto, semp
 
 A princípio, declarações com negação parecem abnóxias. Contudo, não é preciso ir muito longe para transformar o nosso código em um pandemônio. Deste preceito, surgiu a minha vontade de desenvolver uma biblioteca .NET: [Pandemonium](https://github.com/ghiorzi/Pandemonium).
 
-## 2. Livre-se da negação
+## 1. Livre-se da negação
 
 Há alguns meses eu havia escrito um artigo sobre métodos de extensão, nele eu exponho meu ponto de vista sobre negação: "Acredito que, por questão semântica, toda verificação booleana deva ser auferida tanto por um comportamento que ratifica o caso verdadeiro quanto por um comportamento que certifica o caso falso".
 
@@ -47,7 +47,7 @@ if (value.False())
 
 Ok, porém creio que expressividade pode ir além disso...
 
-## 3. Amplie a expressividade através de variáveis
+## 2. Amplie a expressividade através de variáveis
 
 Parece ser uma pratica universal evadir o uso de variáveis booleanas quando lida-se com estruturas condicionais. Para refletirmos, imagine que precisamos verificar se um cliente pode pagar o preço promocional em um produto qualquer, assumindo ao menos um dos seguintes critérios para tal:
 
@@ -114,7 +114,7 @@ O cliente tem menos de 10 anos **ou** o cliente tem mais de 60 anos **ou** é an
 
 > Não sou favorável a deixar as regras "soltas" como nos códigos acima, poderíamos seguir por outras linhas, tais como: declarar os comportamentos num modelo ou usar Specification Pattern;
 
-## 4. Aproxime-se da linguagem humana
+## 3. Aproxime-se da linguagem humana
 
 Você pode programar em C#, JavaScript, Dart, Ruby, Python, Java, etc. Ainda que a gente não use a mesma linguagem de programação, temos um ponto em comum bem forte: **falamos a mesma língua**.
 
@@ -170,7 +170,7 @@ TimeSpan.FromDays(7);
 7.Days();
 ```
 
-## 5. Evite declarações condicionais triviais com funções de alta ordem
+## 4. Evite declarações condicionais triviais com funções de alta ordem
 
 "De vez em sempre" nos deparamos com fluxos mais simples que resultam em basicamente um if-else:
 
@@ -194,7 +194,7 @@ text
     .Otherwise(() => WriteLine("text is required"))
 ```
 
-## 6. Use funções de alta ordem para remover valores de uma string
+## 5. Use funções de alta ordem para remover valores de uma string
 
 Ah, quem nunca foi ingênuo de usar o replace sem dó ou concatenar strings como se não houvesse amanhã?
 

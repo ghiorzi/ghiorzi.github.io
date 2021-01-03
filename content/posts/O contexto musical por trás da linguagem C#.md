@@ -9,7 +9,7 @@ canonical_url: false
 description: "Inteligibilidade é comumente negligenciada quando estamos dando nossos primeiros passos no mundo da programação. Manifeste-se, por favor, quem em nenhuma circunstância declarou variáveis desprovidas de semântica."
 ---
 
-## 1. Introdução
+## Introdução
 
 C# é uma das linguagens de programação que eu particularmente mais gosto, fui facilmente cativado quando a experimentei. Entretanto, antes mesmo de usá-la havia um detalhe que chamava bastante a minha atenção: o nome.
 
@@ -19,7 +19,7 @@ Ok, mas o que raios é um dó sustenido? (╯°□°）╯︵ ┻━┻
 
 Antes de responder essa pergunta, permita-me falar um pouco sobre auto-incremento para termos um pouco de contexto.
 
-## 2. Operadores de auto-incremento
+## 1. Operadores de auto-incremento
 
 No contexto computacional, o operador ++ representa auto-incremento. Podemos fragmentar o auto-incremento em duas categorias distintas: pré-incremento e pós-incremento.
 
@@ -46,7 +46,7 @@ O conceito de auto-incremento é usado no nome do C++. Da a entender que é um C
 
 Muito bem, com isto esclarecido podemos enfim ir para o contexto musical.
 
-## Tom, semitom, sustenido e bemol
+## 2. Tom, semitom, sustenido e bemol
 
 Apesar de nem todos se interessarem por música, eu arrisco dizer que muita gente conhece a escala de dó maior: C (dó), D (ré), E (mi), F (fá), G (sol), A (lá), B (si).
 

@@ -4,12 +4,12 @@ date: 2019-09-29
 published: true
 tags: ['C#', 'Feature']
 series: false
-cover_image: ./images/2. Operator overloading.jpg
+cover_image: ./images/Operator overloading.jpg
 canonical_url: false
 description: "Sobrecarga é um conceito costumeiro no universo da programação, no entanto, estamos mais familiarizados com essa feature conduzida a construtores e métodos."
 ---
 
-## 1. Introdução
+## Introdução
 
 Sobrecarga é um conceito costumeiro no universo da programação, no entanto, estamos mais familiarizados com essa feature conduzida a construtores e métodos.
 
@@ -38,7 +38,7 @@ public class OverloadSample
 }
 ```
 
-## 2. Sobrecarga de operador
+## 1. Sobrecarga de operador
 
 Sobrecarga é um conceito costumeiro no universo da programação, no entanto, estamos mais familiarizados com essa feature conduzida a construtores e métodos.
 
@@ -69,7 +69,7 @@ NonNullOrEmptyString sample = new NonNullOrEmptyString("Hello");
 
 Contudo, se eu disser: podemos criar esse objeto de uma maneira mais simplificada, inclusive, atribuindo a string “Hello” diretamente ao objeto. O que você diria?
 
-## 3. Operadores de conversão
+## 2. Operadores de conversão
 
 Antes de tudo, o que é conversão? 
 
