@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>LINQ (1) - Lazy evaluation - Ghiorzi&#x27;s blog</title><meta name="gridsome:hash" content="21e8d6024374c8b3453b554d6d762f3435f72b44"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" name="description" content="Conhecimento em LINQ é mandatório para qualquer pessoa que resolva se aventurar no universo C#. À primeira vista, LINQ assemelha ser meramente mais um dos instrumentos da linguagem, contudo, em virtude dele, coleções tornam-se expressivamente profícuas."><meta data-vue-tag="ssr" name="image" content="/assets/static/LINQ%20(1)%20-%20Lazy%20evaluation.07cc2b7.f2ffc05c50f9436f11a2c94b6b475029.jpg"><meta data-vue-tag="ssr" name="author" content="Rodrigo Ghiorzi"><meta data-vue-tag="ssr" name="publish_date" content="04/01/2021"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.9bb7ffafafc09ac851d81afb65b8ef59.png"><link rel="preload" href="/assets/css/0.styles.820c4209.css" as="style"><link rel="preload" href="/assets/js/app.7ccbc68a.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--post-vue.de35c525.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.40158b50.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.bf594145.js"><link rel="prefetch" href="/assets/js/page--src--templates--tag-vue.3f8e1c71.js"><link rel="stylesheet" href="/assets/css/0.styles.820c4209.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div id="app" data-server-rendered="true"><header class="header"><div class="header__left"><a href="/" class="logo active"><span class="logo__text"> ← </span></a></div></header><main class="main"><div class="post-title"><h1 class="post-title__text">
+      LINQ (1) - Lazy evaluation
+    </h1><div class="post-meta">
+  Publicado em 04/01/2021
+</div></div><div class="post content-box"><div class="post__header"><img alt="Cover image" src="data:image/svg+xml,%3csvg fill='none' viewBox='0 0 860 574' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cdefs%3e%3cfilter id='__svg-blur-f691e2a5ddc36b1847133e6974613996'%3e%3cfeGaussianBlur in='SourceGraphic' stdDeviation='10'/%3e%3c/filter%3e%3c/defs%3e%3cimage x='0' y='0' filter='url(%23__svg-blur-f691e2a5ddc36b1847133e6974613996)' width='860' height='574' xlink:href='data:image/jpeg%3bbase64%2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAArAEADASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAABQYHAgQIAf/EADIQAAEDAgUCBAQFBQAAAAAAAAECAwQFEQAGEiExE0EHUWGBFCJxkQgjMqGxFkJSYtH/xAAZAQACAwEAAAAAAAAAAAAAAAAEBQACAwH/xAAkEQACAgIBAgcBAAAAAAAAAAABAgARAxIEITETFCIyQUJhgf/aAAwDAQACEQMRAD8AosaoQcjZWiy5QQsSl9NpltaUFSjZJIttYBIJPrhxy%2byHs0VN75XEtIbaSoHVyLk3GOX8rU2VWUQItTqsgw0F2W00lvWUqK/zLJP6eyt9rfXFiyRAbYobcioVesITIlBkobk6EHcpJNvpjVuXiboplFwsLJj/AEfM0aoZiqlJckMJXGUektB2cSP1bnuDiOfiIrDUisx4TLyZDMZi4OoKAWs72ttwBg%2b3Sst06LHq8lDc6KlrW80HCVqvwqxt5KuOMTrxPkQZKY0mk08MQpqUqbZItoQrbe3GBuTysY6IfyE8PAWOxgnw%2bqWXKMqRKzXFkS23Gy0y2y3rOs3%2ba1wLDb74KzKq08w27RMu1aQhF1LBjpaRpsN7kn17dsTepUZ0gllTim2yQnmw3ttgE3MqEFSVMSZDdj/a4obYWMEz1fcRkC2L%2bxzpMLMTC570WkxUtKkqcUHFW6epRRoOnsFfx64xmUvMQcfZfmwUaldNRRHCigg76SePrhg8PZrtfEqFKfShx4JcKrbuFLoWr33ODFVbCpcg32MhX8n/AJjPYg2QLncePYUbhn%2bq4dVzAafTWHWWg0hlxwJG2rSFgW7WSAcVKDHi0eg1Jph0LQXVqa2BCVKSLfuccxZTfr8OolyA11JvSDqZRdCQlN91kki/Pfn1x0JQqw6zkRL1UadlTSsOuu2CkP8A5iT8iuNQA0lPpsMQ7KxJuKdCpk18YDNy0/HhodQ5H6GhKUJKRqUDc%2btuBfASmzmqxkAIdcUJkJSmAvYqsfmSfsSPbD545xFZhhsTYsFxD7Da0vtoIcCEAghRI2G5IxFctLVAbkxVpVd1HUWfNQOwHsTjIKgSk%2bDcacc2AZtyIdRfKAwoux20gBIWhIVbnYE8%2buBNdCGw3HTDcS44TqW5bgeVuThgrFPiyb9BtDq18k8k6Ra37/bAumUV2O8hailCgSUa%2bE35IHAOKq4vYwsoa1E28uSBQpjD6gUgEuuH/FBNvvYnDg%2b91ghadwtRVtwecJlRRG%2bHVHacS46tR1qv58n7dsOFKZZXlmmOMCWqeGxraDQKBa9lFV7i433GIGsXOFghAMlWXqgTNT8e860whQ1qaGpdv9QTa/12w4xc6T20pbYlyFMjVoS4lJITfy4uduMT2EkFBvza/vfDRQGW1VSIFJBBKtj6DbBeXK6e0kRWrE95WaLKzhUsvpqtPZakQF60Ohs6S3bZSVi%2b1wfpY4AKplLmuqdgyW7Nq0lkkFaTbg9jxyMLkmr1CHTXKdFmPNQZYSX2UKsly3njfyLFZkwagt9sLU2lxaCSdiODhdyeU5TxHN1N8ecYvqKhCBRZLMu6oyn09gOBjCdTqhIaCGYbjKFukJSo7/byw05DqUt9Tkd59S2W4xcSCBsq3N%2bceeLVRlQYiUw3eiHowUsoSASSSDvbb2xRST6oZ5lNbqS6rt0%2bk16NHmOLfZb0h8Rj6gqGo7X7YrUWtZEcMlNOqvw0V8J1xXHVtXSLWbuLpUNuefTEmkwYy8u1OQppJeakx20K8kqSoqHvYYE1OkQU5Slzks2lIkobSvWrZJSbi17dvLDHAqsNWF3AsuUPP//Z' /%3e%3c/svg%3e" width="860" data-src="/assets/static/LINQ%20(1)%20-%20Lazy%20evaluation.07cc2b7.f2ffc05c50f9436f11a2c94b6b475029.jpg" data-srcset="/assets/static/LINQ%20(1)%20-%20Lazy%20evaluation.a67b0b2.f2ffc05c50f9436f11a2c94b6b475029.jpg 480w, /assets/static/LINQ%20(1)%20-%20Lazy%20evaluation.07cc2b7.f2ffc05c50f9436f11a2c94b6b475029.jpg 860w" data-sizes="(max-width: 860px) 100vw, 860px" class="g-image g-image--lazy g-image--loading"><noscript><img src="/assets/static/LINQ%20(1)%20-%20Lazy%20evaluation.07cc2b7.f2ffc05c50f9436f11a2c94b6b475029.jpg" class="g-image g-image--loaded" width="860" alt="Cover image"></noscript></div><div class="post__content"><h2 id="introdução"><a href="#introdu%C3%A7%C3%A3o" aria-hidden="true"><span class="icon icon-link"></span></a>Introdução</h2>
+<p>Conhecimento em <strong>LINQ</strong> é mandatório para qualquer pessoa que resolva se aventurar no universo C#. À primeira vista, <strong>LINQ</strong> assemelha ser meramente mais um dos instrumentos da linguagem, contudo, em virtude dele, coleções tornam-se expressivamente profícuas. <strong>LINQ</strong> trás consigo um conjunto de features valorosas, dentre elas: manipular objetos em memória, manipular xml e até mesmo manipular queries em banco de dados. De fato, <strong>LINQ</strong> é encantador! Todavia, como toda abstração, é importante atentar alguns pormenores.</p>
+<h2 id="1-enumerable"><a href="#1-enumerable" aria-hidden="true"><span class="icon icon-link"></span></a>1. Enumerable</h2>
+<p><strong>Enumerable</strong> é um dos diversos recursos de coleção à disposição no C#. Para compreender o <strong>LINQ</strong> de modo correto é primordial que, antes de tudo, entenda-se mais sobre o <strong>Enumerable</strong>.</p>
+<p><strong>Enumerable</strong> é uma coleção read-only, ou seja, não é possível efetuar operações de escrita como adicionar ou remover um elemento. Porém, este não é seu único aspecto.</p>
+<p><strong>Enumerable is lazy!</strong> Quando alguma operação é produzida em um <strong>Enumerable</strong>, os registros não são carregados na memória. Isto porque as operações não são materializadas de imediato, afinal o <strong>Enumerable</strong> é preguiçoso.</p>
+<h3 id="11-deferred-query-execution"><a href="#11-deferred-query-execution" aria-hidden="true"><span class="icon icon-link"></span></a>1.1. Deferred query execution</h3>
+<p>Deferred query execution (lazy evaluation) é indubitavelmente um dos conceitos mais significativos do <strong>LINQ</strong>, visto que sem este mecanismo, <strong>LINQ</strong> desempenharia de maneira insatisfatória.</p>
+<p>Para ilustrar esta concepção, tomaremos como exemplo o simples trecho de código a seguir:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token comment">// 1. Dado um conjunto de números de 1 a 10</span>
+<span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> numbers <span class="token operator">=</span> Enumerable<span class="token punctuation">.</span><span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 2. Busque apenas os números pares contidos em numbers</span>
+<span class="token class-name"><span class="token keyword">var</span></span> evenNumbers <span class="token operator">=</span>
+    numbers<span class="token punctuation">.</span>
+        <span class="token comment">// 3. Onde number obrigatóriamente seja divisível por 2</span>
+        <span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>number <span class="token operator">=></span> number <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token comment">// 4. Destes, obtenha somente os 3 primeiros</span>
+        <span class="token punctuation">.</span><span class="token function">Take</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+        <span class="token comment">// 5. Materialize em uma lista</span>
+        <span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>As funções <strong>Where</strong> e <strong>Take</strong>, vulgo <strong>query operators</strong>, efetuam ações de consulta na etapa 3 e 4, respectivamente. O enigmático, no entanto, é que estas ações são concretizadas verdadeiramente no quinto estágio, quando há materialização dos dados. Em outras palavras, enquanto não houver materialização, os registros não são conduzidos para a memória.</p>
+<p>Para ratificar que o <strong>Enumerable</strong> atua sob demanda, podemos realizar uma experimentação elementar: implementar um <strong>Enumerable</strong>.</p>
+<h2 id="2-sequences"><a href="#2-sequences" aria-hidden="true"><span class="icon icon-link"></span></a>2. Sequences</h2>
+<p><strong>IEnumerable</strong> é uma interface, portanto, é praticável implementá-lo. A implementação de um <strong>IEnumerable</strong> é denominada como <strong>Sequence</strong>. <strong>Sequence</strong>, diferente de <strong>List</strong>, comporta somente operações de leituras. Por derivar-se de um <strong>IEnumerable</strong>, <strong>Sequences</strong> beneficiam-se de <strong>lazy evaluation</strong>.</p>
+<h3 id="21-experimento"><a href="#21-experimento" aria-hidden="true"><span class="icon icon-link"></span></a>2.1 Experimento</h3>
+<p>Como experimento, criaremos um <strong>Sequences</strong>. Nosso Sequence será responsável por carregar números pares. Simples, não?</p>
+<p>Iremos lidar com números inteiros, logo, implementaremos um IEnumerable<int>:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EvenNumbers</span><span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">EvenNumbersEnumerator</span> _enumerator<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">EvenNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token operator">=></span> _enumerator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">EvenNumbersEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name">IEnumerator<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> <span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token operator">=></span> _enumerator<span class="token punctuation">;</span>
+
+    <span class="token return-type class-name">IEnumerator</span> IEnumerable<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token operator">=></span> _enumerator<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Perceba que, além do <strong>IEnumerable</strong>, há mais um integrante na jogada. <strong>Enumerator</strong> é um constitutivo primacial, incumbido por gerar uma sequência de valores. Há uma particularidade, entretanto. Em vez de conceber uma coleção com todos os valores de imediato, o <strong>Enumerator</strong> disponibiliza os valores individualmente de forma preguiçosa.</p>
+<p>Este mecanismo propicia que os primeiros valores auferidos sejam processados in continenti, sem a compulsoriedade de conter todos os elementos.</p>
+<p>Assim sendo, devemos da mesma forma, implementar um <strong>Enumerator</strong>:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EvenNumbersEnumerator</span><span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IEnumerator<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Current <span class="token operator">=></span> _current<span class="token punctuation">;</span>
+
+    <span class="token return-type class-name"><span class="token keyword">object</span></span> IEnumerator<span class="token punctuation">.</span>Current <span class="token operator">=></span> _current<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">int</span></span> _current <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _current <span class="token operator">=</span> _current <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token operator">=></span> _current <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token operator">=></span> GC<span class="token punctuation">.</span><span class="token function">SuppressFinalize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>O ponto-chave é a função MoveNext</strong>. Em síntese, enquanto houver valores para serem iterados, o cursor se moverá <strong>sequencialmente</strong> para o elemento sucessor. No tocante ao nosso cenário, não há delimitação para o final da sequência. Isto posto, o incremento ocorrerá sem restringimento.</p>
+<p>Contudo, algo a se observar é que enquanto o MoveNext não for invocado, não haverá valor para ser iterado. Por conseguinte, o "valor inicial" será 0, mas para legitimar essa declaração iremos percorrer a sequência de modo inusual.</p>
+<h3 id="22-iterator"><a href="#22-iterator" aria-hidden="true"><span class="icon icon-link"></span></a>2.2 Iterator</h3>
+<p>Habitualmente, iteramos sequências através do foreach. Porém, para entendermos o fluxo do <strong>Enumerator</strong>, iremos seguir uma abordagem "mais manual":</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> evenNumbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">EvenNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. Obtemos o Enumerator</span>
+<span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> enumerator <span class="token operator">=</span> evenNumbers<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// 2. Retornará 0, pois o MoveNext ainda não foi chamado</span>
+    <span class="token function">WriteLine</span><span class="token punctuation">(</span>enumerator<span class="token punctuation">.</span>Current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 3. Moveremos o cursor para o próximo valor</span>
+    enumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 4. Exibirá o número 2</span>
+    <span class="token function">WriteLine</span><span class="token punctuation">(</span>enumerator<span class="token punctuation">.</span>Current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 5. Moveremos o cursor para o próximo valor</span>
+    enumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 6. Exibirá o número 4 e assim sucessivamente</span>
+    <span class="token function">WriteLine</span><span class="token punctuation">(</span>enumerator<span class="token punctuation">.</span>Current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note que, a partir da nossa <strong>Sequence</strong> (EvenNumbers), obtemos o <strong>Enumerator</strong> (EvenNumbersEnumerator). E dai a diante temos acesso aos valores da sequência. Enquanto o MoveNext não é chamado, o valor 2 não será retornado, da mesma forma que o valor 4 será retornado somente após o MoveNext ser chamado após o cursor estar apontado para o valor 2.</p>
+<p>Por baixo dos panos, o que ocorre ao usarmos o foreach é o seguinte:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> enumerator <span class="token operator">=</span> evenNumbers<span class="token punctuation">.</span><span class="token function">GetEnumerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>enumerator<span class="token punctuation">.</span><span class="token function">MoveNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Trecho dentro do foreach</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Entretanto, como não demarcamos um valor final para a nossa Sequence, cairíamos em um loop infinito.</p>
+<p>Enfim, para ratificar o <strong>lazy evalution</strong>, usaremos o <strong>Sequence</strong> que acabamos de criar:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> evenNumbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">EvenNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+evenNumbers
+    <span class="token punctuation">.</span><span class="token function">Take</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Isto feito, podemos fazer o teste:</p>
+<ul>
+<li>Na função MoveNext, deixe um breakpoint na linha em que o valor é atribuído para _current;</li>
+<li>Em seguida, remova o ToList do chaining. Ao fazer isso, não haverá materialização dos dados, consequentemente, o MoveNext não será chamado;</li>
+<li>Adicione novamente o ToList e perceba que a partir de então o MoveNext será chamado.</li>
+</ul>
+<p>Ou seja, podemos configurar como queremos filtrar o nosso <strong>Sequence</strong> e apenas quando precisarmos realmente dos dados, eles serão carregados na memória. <strong>Isto, é claro, se nenhuma materialização ser efetuada de modo indevido</strong>. Fantástico, concorda?</p>
+<h2 id="3-query-operators"><a href="#3-query-operators" aria-hidden="true"><span class="icon icon-link"></span></a>3. Query operators</h2>
+<p>Como já visto, podemos efetuar operações de leitura em <strong>Sequences</strong>, mas como os operadores satisfazem o preceito de <strong>lazy evaluation</strong>? </p>
+<p>Para entendermos melhor, que tal implementarmos um operador chamado <strong>Filter</strong> que fará essencialmente o mesmo que o <strong>Where</strong>?</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token comment">// Método de extensão com comportamento similar ao Where</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name">IEnumerable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> <span class="token generic-method"><span class="token function">Filter</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token class-name">IEnumerable<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> source<span class="token punctuation">,</span> <span class="token class-name">Predicate<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> predicate<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> element <span class="token keyword">in</span> source<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">yield</span> <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Em suma, iteramos um Sequence elemento por elemento, validamos se o elemento vigente corresponde ao predicado e caso o mesmo satisfaça a condição, o elemento é então retornado.</p>
+<p>Como está sendo usado um foreach, os dados, portanto, estão sendo materializados, correto? Nope. Primeiramente, repare que, apesar do operador Filter retornar um IEnumerable, "não está sendo retornado" uma sequência de elemento dentro de seu escopo. Na verdade, está. Porém, aos poucos.</p>
+<h3 id="31-yield-return"><a href="#31-yield-return" aria-hidden="true"><span class="icon icon-link"></span></a>3.1 Yield return</h3>
+<p>Sumariamente, <strong>yield return</strong> é um <strong>syntax sugar</strong> designado para orquestrar a execução do fluxo mediante um estado alusivo ao cursor vigente em um <strong>Enumerable</strong>. Em outros termos, <strong>yield</strong> torna sua aplicação "inteligente" suficientemente para saber em que parte do <strong>Enumerable</strong> o cursor parou e que em algum momento a execução deve retomar a partir deste mesmo ponto. Desta forma, não há problema em retornar um elemento por vez.</p>
+<h2 id="palavras-finais"><a href="#palavras-finais" aria-hidden="true"><span class="icon icon-link"></span></a>Palavras finais</h2>
+<p>Para finalizar, é importante recapitular o que vimos aqui:</p>
+<ul>
+<li><strong>Lazy evaluation</strong> permite que a execução seja efetuada apenas quando os dados são requisitados;</li>
+<li><strong>LINQ</strong> só é viável graças ao <strong>lazy evaluation</strong>;</li>
+<li>Criar <strong>Sequences</strong> customizados promove flexibilidade, afinal seu objeto desfrutará de lazy evalution e, por consequência, terá acesso aos recursos do <strong>LINQ</strong>;</li>
+<li>Materializar um ou mais <strong>Sequences</strong> de modo indevido seguramente trará dor de cabeça.</li>
+</ul>
+</div></div></main></div>
+    <script src="/assets/js/app.7ccbc68a.js" defer></script><script src="/assets/js/page--src--templates--post-vue.de35c525.js" defer></script>
+  </body>
+</html>
