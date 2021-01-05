@@ -4,18 +4,18 @@ date: 2020-03-09
 published: true
 tags: ['C#', 'Feature']
 series: false
-cover_image: ./images/4. Métodos de extensão.jpg
+cover_image: ./images/Métodos de extensão.jpg
 canonical_url: false
 description: "Métodos de extensão pertencem a categoria de métodos estáticos, no entanto, possuem a sutil divergência de serem usados como métodos de instancias da tipagem estendida."
 ---
 
-## 1. Introdução
+## Introdução
 
 O presente artigo objetiva demonstrar o uso de métodos de extensão em paralelo com: DRY, Legibilidade e HOF 
 
 Métodos de extensão pertencem a categoria de métodos estáticos, no entanto, possuem a sutil divergência de serem usados como métodos de instancias da tipagem estendida
 
-## 2. Demonstração
+## 1. Demonstração
 
 Supondo que precisássemos escrever um código que exibisse o segundo caractere de uma string (sim, já existe o método First, por isso decide obter o segundo caractere. Sim, eu sou uma pessoa muito criativa), poderíamos escrevê-lo da seguinte maneira:
 
@@ -45,7 +45,7 @@ string text = "Linkedin";
 char secondLetter = text.Second();
 ```
 
-## 3. DRY (Don't repeat yourself)
+## 2. DRY (Don't repeat yourself)
 
 Métodos de extensão podem auxiliar a evadir a duplicação de código.
 
@@ -101,7 +101,7 @@ peopleByAge.Upsert(key, 35);
 ```
 Assim obtemos o mesmo resultado com apenas uma linha, além de evitar repetir o mesmo fluxo em todas as partes do sistema.
 
-## 4. Legibilidade
+## 3. Legibilidade
 
 Existe uma polêmica milenar de desenvolvedores que negam variáveis booleanas com o operador de negação enquanto outros utilizam o == false. Eu discordo de ambos.
 
@@ -131,7 +131,7 @@ message.NotContains("LinkedIn");
 
 Um outro exemplo clássico: Any. Podemos usar o método Any para verificar se há algum elemento que condiga com predicado parametrizado. Entretanto, quando precisamos confirmar o contrario, ou seja, verificar que não há elemento algum que corresponda com predicado parametrizado, novamente seria usado a negação, porém não faria mais sentido estender um método genérico chamado None que fizesse isso por nós?
 
-## 5. HOF (Higher order function)
+## 4. HOF (Higher order function)
 
 Higher order function ou função de alta ordem para os lusófonos, pode ser categorizada como:
 
