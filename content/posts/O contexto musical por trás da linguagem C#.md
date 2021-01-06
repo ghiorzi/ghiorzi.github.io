@@ -4,7 +4,7 @@ date: 2020-08-24
 published: true
 tags: ['C#', 'Reflexão']
 series: false
-cover_image: ./images/O contexto musical por trás da linguagem CSharp.jpg
+cover_image: ./images/O contexto musical por tras da linguagem CSharp.jpg
 canonical_url: false
 description: "Inteligibilidade é comumente negligenciada quando estamos dando nossos primeiros passos no mundo da programação. Manifeste-se, por favor, quem em nenhuma circunstância declarou variáveis desprovidas de semântica."
 ---

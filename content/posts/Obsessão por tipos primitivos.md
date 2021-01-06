@@ -4,7 +4,7 @@ date: 2019-10-01
 published: true
 tags: ['C#', 'Reflexão']
 series: false
-cover_image: ./images/Obsessão por tipos primitivos.jpg
+cover_image: ./images/Obsessao-por-tipos-primitivos.jpg
 canonical_url: false
 description: "O conceito de obsessão por tipos primitivos é auto-explicativo: uso excessivo de tipos primitivos. Parece ser algo notório, mas apenas parece."
 ---

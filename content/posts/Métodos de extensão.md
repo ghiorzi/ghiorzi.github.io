@@ -4,7 +4,7 @@ date: 2020-03-09
 published: true
 tags: ['C#', 'Feature']
 series: false
-cover_image: ./images/Métodos de extensão.jpg
+cover_image: ./images/Metodos-de-extensao.jpg
 canonical_url: false
 description: "Métodos de extensão pertencem a categoria de métodos estáticos, no entanto, possuem a sutil divergência de serem usados como métodos de instancias da tipagem estendida."
 ---

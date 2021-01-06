@@ -1,10 +1,10 @@
 ---
-title: As realidades adjacentes ao universo da codificação
+title: As realidades adjacentes ao universo da codificacao
 date: 2018-12-07
 published: true
 tags: ['Reflexão']
 series: false
-cover_image: ./images/As realidades adjacentes ao universo da codificação.jpg
+cover_image: ./images/As-realidades-adjacentes-ao-universo -da-codificacao.jpg
 canonical_url: false
 description: "Ao perpassar do nosso ínfimo lapso existencial assimilamos novos conceitos e por conseguinte ampliamos nosso intelecto em consonância com a nossa cosmovisão. Tal-qualmente, remodelamos nossa concepção perante a acepção de alguns vocábulos."
 ---
