@@ -2,7 +2,7 @@
 title: Funções - unitárias, binárias, ternárias, poliádicas, variádicas, aninhadas, de alta ordem, anônimas, puras, impuras e recursivas
 date: 2020-06-15
 published: true
-tags: ['C#', 'Feature']
+tags: ['Javascript', 'Programação funcional']
 series: false
 cover_image: ./images/Funções - unitárias, binárias, ternárias, poliádicas, variádicas, aninhadas, de alta ordem, anônimas, puras, impuras e recursivas.jpg
 canonical_url: false
